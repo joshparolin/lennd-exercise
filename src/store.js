@@ -7,10 +7,10 @@ const attachStateToAction = store => next => action =>
 
 const store = createStore(
   rootReducer,
-  applyMiddleware(
-    logger,
-    attachStateToAction
-  )
+  // applyMiddleware(
+  //   logger,
+  //   attachStateToAction
+  // )
 )
 
 export default store
