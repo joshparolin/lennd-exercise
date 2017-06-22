@@ -21,3 +21,7 @@ export const updateFilterText = (text) => ({
   type: 'UPDATE_FILTER_TEXT',
   text
 })
+
+export const reportError = () => ({
+  type: 'REPORT_ERROR',
+})
