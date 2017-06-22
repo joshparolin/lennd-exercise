@@ -65,26 +65,21 @@ loading switch
 
 session: {
   loading:
+  expandedPerson:
 }
 people: {
   $id: {
     id,
-    session: {
-      expanded,
-    },
-    person: {
-      id,
-      name,
-      email,
-      address: {
-        street,
-        suite,
-        city,
-        zipcode,
-        geo: {
-          lat
-          lng
-        }
+    name,
+    email,
+    address: {
+      street,
+      suite,
+      city,
+      zipcode,
+      geo: {
+        lat
+        lng
       }
     }
   }
@@ -95,6 +90,8 @@ people: {
 populate people: {
   ...fetched data
 }
+setIsLoading
+setIsNotLoading 
 expand person: {
   id
 }
