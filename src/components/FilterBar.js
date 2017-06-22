@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import R from "ramda";
+import React from "react";
 import FilterInput from "./FilterInput";
 import { Row, Block } from "jsxstyle";
 import { colorTheme } from "./styleConstants";

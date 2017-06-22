@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Flex } from "jsxstyle";
 import { colorTheme } from "./styleConstants";
 

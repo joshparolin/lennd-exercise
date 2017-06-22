@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
 import R from "ramda";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 import { getPeople, getFilterText, filterPeople, getExpandedPerson } from "../reducers";
-import { Row, Block } from "jsxstyle";
+import { Block } from "jsxstyle";
 import FilterBar from './FilterBar'
 import List from './List'
 import { colorTheme } from "./styleConstants";

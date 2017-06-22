@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
 import R from "ramda";
 
-const logAndPass = a => {
-  console.log(a);
-  return a;
-};
+// const logAndPass = a => {
+//   console.log(a);
+//   return a;
+// };
 
 ////////////////////////////////////////////////////
 // session reducer
@@ -13,7 +13,8 @@ const session = (
   state = {
     loading: true,
     expandedPerson: null,
-    filterText: ""
+    filterText: "",
+    error: false
   },
   action
 ) => {
@@ -38,6 +39,11 @@ const session = (
         ...state,
         expandedPerson: action.id
       };
+    case "REPORT_ERROR":
+      return {
+        ...state,
+        error: true
+      }
     default:
       return state;
   }
