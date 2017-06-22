@@ -16,3 +16,8 @@ export const setLoadingTrue = () => ({
 export const setLoadingFalse = () => ({
   type: 'SET_LOADING_FALSE',
 })
+
+export const updateFilterText = (text) => ({
+  type: 'UPDATE_FILTER_TEXT',
+  text
+})

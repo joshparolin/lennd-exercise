@@ -3,17 +3,26 @@ import R from "ramda";
 
 const logAndPass = a => {
   console.log(a);
-  return a
-}
+  return a;
+};
+
+////////////////////////////////////////////////////
+// session reducer
 
 const session = (
   state = {
     loading: true,
-    expandedPerson: null
+    expandedPerson: null,
+    filterText: ""
   },
   action
 ) => {
   switch (action.type) {
+    case "UPDATE_FILTER_TEXT":
+      return {
+        ...state,
+        filterText: action.text
+      };
     case "SET_LOADING_TRUE":
       return {
         ...state,
@@ -34,6 +43,9 @@ const session = (
   }
 };
 
+////////////////////////////////////////////////////
+// people reducer
+
 const personAttrs = ["id", "name", "email", "address"];
 
 const person = (state = {}, action) => {
@@ -50,9 +62,7 @@ const person = (state = {}, action) => {
 
 const arrToObjWithKeyId = arr => R.zipObj(R.map(R.path(["id"]), arr), arr);
 
-
 const omitIfNoId = R.filter(R.has("id"));
-
 
 const people = (state = {}, action) => {
   switch (action.type) {
@@ -66,14 +76,35 @@ const people = (state = {}, action) => {
         arrToObjWithKeyId,
         R.map(updatePerson),
         omitIfNoId
-      )
-      return populatePeople(action.peopleData)
+      );
+      return populatePeople(action.peopleData);
     default:
       return state;
   }
 };
 
-export const getLoading = R.path(['session', 'loading'])
+////////////////////////////////////////////////////
+// root reducer
+
+export const getPeople = R.path(["people"]);
+
+export const getLoading = R.path(["session", "loading"]);
+
+export const getFilterText = R.path(["session", "filterText"]);
+
+const matchTextRegExp = text => new RegExp(text, "gi");
+
+export const filterPeople = (filterText, people) => {
+  if (filterText === '') {
+    return people
+  } else {
+    const hasTextInName = R.compose(
+      R.test(matchTextRegExp(filterText)),
+      R.path(["name"])
+    );
+    return R.filter(hasTextInName, people);
+  }
+};
 
 const rootReducer = combineReducers({
   session,
