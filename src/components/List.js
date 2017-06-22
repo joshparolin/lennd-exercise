@@ -32,8 +32,23 @@ const TopRow = ({ name, email }) => (
   </Row>
 );
 
+const GoogleMap = ({
+  lat,
+  lng,
+}) => (
+  <iframe
+    src={`https://www.google.com/maps/embed/v1/view?key=AIzaSyB3y14YDxyXlthqFGH-fxdBda-BfHrRs9c&center=${lat},${lng}&zoom=4`}
+    style={{border: 0, paddingTop: 10, paddingBottom: 10}}
+    width={300}
+    height={200}
+    frameBorder={"0"}
+    allowFullScreen
+    >
+  </iframe>
+)
+
 const Address = ({ street, suite, city, zipcode }) => (
-  <Block color={colorTheme.grey3} fontSize={14} whiteSpace={"pre"}>
+  <Block color={colorTheme.grey3} fontSize={14} whiteSpace={"pre"} paddingTop={10}>
     <InlineBlock fontWeight={"bold"}>
       {"Address: "}
     </InlineBlock>
@@ -42,11 +57,10 @@ const Address = ({ street, suite, city, zipcode }) => (
 );
 
 const BottomRow = ({ address }) => (
-  <Row
+  <Flex
     backgroundColor={colorTheme.grey1}
-    height={27}
-    alignItems={"center"}
-    justifyContent={"flex-end"}
+    flexDirection={"column"}
+    alignItems={"flex-end"}
     paddingRight={36}
   >
     <Address
@@ -55,7 +69,8 @@ const BottomRow = ({ address }) => (
       city={address.city}
       zipcode={address.zipcode}
       />
-  </Row>
+    <GoogleMap lat={address.geo.lat} lng={address.geo.lng}/>
+  </Flex>
 );
 
 const Item = ({ name, address, email, expand, expanded }) => (
