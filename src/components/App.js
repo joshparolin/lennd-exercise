@@ -5,8 +5,8 @@ import * as actions from "../actions";
 import apiStub from "../apiStub";
 import { getLoading } from "../reducers";
 import Main from './Main'
-
-const Header = () => <div>Header</div>;
+import Header from './Header'
+import { colorTheme } from "./styleConstants";
 
 
 class App extends Component {
@@ -15,12 +15,13 @@ class App extends Component {
   }
   render() {
     return (
-      <div style={{padding: 32}}>
+      <Block backgroundColor={colorTheme.grey1} height={'100%'}>
         <Header />
-        <div>
+        <Block padding={'0 50px 50px 50px'}>
           {this.props.loading ? <div>Loading</div> : <Main />}
-        </div>
-      </div>
+        </Block>
+
+      </Block>
     );
   }
 }

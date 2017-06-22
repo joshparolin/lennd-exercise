@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Row, InlineBlock, Block } from "jsxstyle";
+import { colorTheme } from "./styleConstants";
 
 
 const Input = ({value, handleChange, placeholder, ...props}) => (
@@ -34,7 +35,7 @@ const RaisedRow = ({height, width, children}) => (
     borderRadius={3}
     color={"black"}
     backgroundColor={"white"}
-    boxShadow={'inset 0px 1px 3px 0px rgba(0,0,0,0.5)'}
+    boxShadow={`inset 0px 1px 3px 0px ${colorTheme.grey3}`}
     >
     {children}
   </Row>
@@ -56,6 +57,7 @@ const FilterInput = ({ value, handleChange }) => (
       placeholder={"Find by name"}
       fontSize={15}
       paddingLeft={8}
+      marginRight={4}
       flex={1}
       />
   </RaisedRow>

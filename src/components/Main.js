@@ -6,6 +6,8 @@ import { getPeople, getFilterText, filterPeople, getExpandedPerson } from "../re
 import { Row, Block } from "jsxstyle";
 import FilterBar from './FilterBar'
 import List from './List'
+import { colorTheme } from "./styleConstants";
+
 
 const Main = ({
   people,
@@ -16,14 +18,14 @@ const Main = ({
   numberOfPeople,
   expandedPerson
 }) => (
-  <div>
+  <Block border={`solid 1px ${colorTheme.grey2}`} borderRadius={'0 0 10px 10px'} >
     <FilterBar
       filterText={filterText}
       updateFilterText={updateFilterText}
       numberOfPeople={numberOfPeople}
     />
     <List people={people} expandPerson={expandPerson} expandedPerson={expandedPerson}/>
-  </div>
+  </Block>
 );
 
 const mapStateToProps = state => {

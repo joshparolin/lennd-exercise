@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "gravatar": "^1.6.0",
     "jsxstyle": "^1.0.2",
     "ramda": "^0.24.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-gravatar": "^2.6.3",
     "react-redux": "^5.0.5",
     "redux": "^3.7.0",
     "uuid": "^3.1.0"
