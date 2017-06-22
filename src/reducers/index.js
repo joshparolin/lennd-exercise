@@ -92,11 +92,13 @@ export const getLoading = R.path(["session", "loading"]);
 
 export const getFilterText = R.path(["session", "filterText"]);
 
+export const getExpandedPerson = R.path(["session", "expandedPerson"]);
+
 const matchTextRegExp = text => new RegExp(text, "gi");
 
 export const filterPeople = (filterText, people) => {
-  if (filterText === '') {
-    return people
+  if (filterText === "") {
+    return people;
   } else {
     const hasTextInName = R.compose(
       R.test(matchTextRegExp(filterText)),

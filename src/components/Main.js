@@ -1,40 +1,40 @@
 import React, { Component } from "react";
+import R from "ramda";
 import { connect } from "react-redux";
 import * as actions from "../actions";
-import { getPeople, getFilterText, filterPeople } from "../reducers";
-import Input from './Input'
-
-const Top = ({
-  filterText,
-  updateFilterText
-}) => <div>
-  <Input
-    value={filterText}
-    handleChange={updateFilterText}
-    />
-</div>
-
-const List = () => <div></div>
+import { getPeople, getFilterText, filterPeople, getExpandedPerson } from "../reducers";
+import { Row, Block } from "jsxstyle";
+import FilterBar from './FilterBar'
+import List from './List'
 
 const Main = ({
   people,
   expandPerson,
+  searching,
   filterText,
-  updateFilterText
-}) => <div>
-  <Top
-    filterText={filterText}
-    updateFilterText={updateFilterText}
+  updateFilterText,
+  numberOfPeople,
+  expandedPerson
+}) => (
+  <div>
+    <FilterBar
+      filterText={filterText}
+      updateFilterText={updateFilterText}
+      numberOfPeople={numberOfPeople}
     />
-  <List/>
-</div>
-
+    <List people={people} expandPerson={expandPerson} expandedPerson={expandedPerson}/>
+  </div>
+);
 
 const mapStateToProps = state => {
-  const filterText = getFilterText(state)
+  const filterText = getFilterText(state);
+  const people = filterPeople(filterText, getPeople(state));
   return {
-    people: filterPeople(filterText, getPeople(state)),
-    filterText
+    people,
+    filterText,
+    numberOfPeople: R.length(R.keys(people)),
+    searching: filterText !== '',
+    expandedPerson: getExpandedPerson(state)
   };
 };
 
@@ -44,7 +44,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(actions.expandPerson(id));
     },
     updateFilterText: text => {
-      dispatch(actions.updateFilterText(text))
+      dispatch(actions.updateFilterText(text));
     }
   };
 };
