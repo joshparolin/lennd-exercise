@@ -1,7 +1,10 @@
 import { combineReducers } from "redux";
 import R from "ramda";
 
-
+const logAndPass = a => {
+  console.log(a);
+  return a
+}
 
 const session = (
   state = {
@@ -11,12 +14,12 @@ const session = (
   action
 ) => {
   switch (action.type) {
-    case "SET_IS_LOADING":
+    case "SET_LOADING_TRUE":
       return {
         ...state,
         loading: true
       };
-    case "SET_IS_NOT_LOADING":
+    case "SET_LOADING_FALSE":
       return {
         ...state,
         loading: false
@@ -45,8 +48,11 @@ const person = (state = {}, action) => {
   }
 };
 
-const arrToObjWithKeyId = arr => R.zipObj(R.map(R.path("id")), arr);
+const arrToObjWithKeyId = arr => R.zipObj(R.map(R.path(["id"]), arr), arr);
+
+
 const omitIfNoId = R.filter(R.has("id"));
+
 
 const people = (state = {}, action) => {
   switch (action.type) {
@@ -66,6 +72,8 @@ const people = (state = {}, action) => {
       return state;
   }
 };
+
+export const getLoading = R.path(['session', 'loading'])
 
 const rootReducer = combineReducers({
   session,

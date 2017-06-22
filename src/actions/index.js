@@ -9,10 +9,10 @@ export const expandPerson = (id) => ({
   id
 })
 
-export const setIsLoading = () => ({
-  type: 'SET_IS_LOADING',
+export const setLoadingTrue = () => ({
+  type: 'SET_LOADING_TRUE',
 })
 
-export const setIsNotLoading = () => ({
-  type: 'SET_IS_NOT_LOADING',
+export const setLoadingFalse = () => ({
+  type: 'SET_LOADING_FALSE',
 })

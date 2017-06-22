@@ -90,8 +90,8 @@ people: {
 populate people: {
   ...fetched data
 }
-setIsLoading
-setIsNotLoading 
+setLoadingTrue
+setLoadingFalse 
 expand person: {
   id
 }
