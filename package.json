@@ -7,9 +7,12 @@
     "jsxstyle": "^1.0.2",
     "ramda": "^0.24.1",
     "react": "^15.6.1",
+    "react-collapse": "^4.0.2",
     "react-dom": "^15.6.1",
     "react-gravatar": "^2.6.3",
+    "react-motion": "^0.5.0",
     "react-redux": "^5.0.5",
+    "react-transition-group": "^1.2.0",
     "redux": "^3.7.0",
     "uuid": "^3.1.0"
   },
