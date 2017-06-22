@@ -4,10 +4,10 @@ import { connect } from "react-redux";
 import * as actions from "../actions";
 import apiStub from "../apiStub";
 import { getLoading } from "../reducers";
+import Main from './Main'
 
 const Header = () => <div>Header</div>;
 
-const Main = () => <div>Main</div>;
 
 class App extends Component {
   componentDidMount() {
@@ -15,7 +15,7 @@ class App extends Component {
   }
   render() {
     return (
-      <div>
+      <div style={{padding: 32}}>
         <Header />
         <div>
           {this.props.loading ? <div>Loading</div> : <Main />}

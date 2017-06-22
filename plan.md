@@ -66,6 +66,7 @@ loading switch
 session: {
   loading:
   expandedPerson:
+  filterText:
 }
 people: {
   $id: {
@@ -91,7 +92,7 @@ populate people: {
   ...fetched data
 }
 setLoadingTrue
-setLoadingFalse 
+setLoadingFalse
 expand person: {
   id
 }
