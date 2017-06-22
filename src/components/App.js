@@ -1,15 +1,20 @@
 import React, { Component } from "react";
-import { Block } from "jsxstyle";
+import { Block, Row } from "jsxstyle";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 // import apiStub from "../apiStub";
 import { getLoading } from "../reducers";
 import Main from "./Main";
 import Header from "./Header";
+import Loader from "halogen/ScaleLoader";
 import { colorTheme } from "./styleConstants";
 const endpoint = "http://jsonplaceholder.typicode.com/users";
 
-const Loading = () => <Block padding={50}>Loading</Block>;
+const Loading = () => (
+  <Row padding={50} justifyContent={"center"}>
+    <Loader color={colorTheme.green} />
+  </Row>
+);
 const ErrorMessage = () => (
   <Block padding={50}>{`Sorry, there's been an error`}</Block>
 );
